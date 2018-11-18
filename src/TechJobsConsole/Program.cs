@@ -30,6 +30,7 @@ namespace TechJobsConsole
 
                 string actionChoice = GetUserSelection("View Jobs", actionChoices);
 
+                // if user selects list...
                 if (actionChoice.Equals("list"))
                 {
                     string columnChoice = GetUserSelection("List", columnChoices);
@@ -38,11 +39,12 @@ namespace TechJobsConsole
                     {
                         PrintJobs(JobData.FindAll());
                     }
-                    else
+                    else // if user chooses any other list option besides "all"...
                     {
                         List<string> results = JobData.FindAll(columnChoice);
 
                         Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
+                        results.Sort();
                         foreach (string item in results)
                         {
                             Console.WriteLine(item);

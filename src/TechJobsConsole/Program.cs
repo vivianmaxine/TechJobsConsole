@@ -64,12 +64,26 @@ namespace TechJobsConsole
                     if (columnChoice.Equals("all"))
                     {
                         searchResults = JobData.FindByValue(searchTerm);
-                        PrintJobs(searchResults);
-;                    }
+                        if (searchResults.Count != 0)
+                        {
+                            PrintJobs(searchResults);
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no search results that match the keyword '" + searchTerm + "'.");
+                        }
+                    }
                     else
                     {
                         searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
-                        PrintJobs(searchResults);
+                        if (searchResults.Count != 0)
+                        {
+                            PrintJobs(searchResults);
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no search results within the " + columnChoice + " category that match the keyword '" + searchTerm + "'.");
+                        }
                     }
                 }
             }

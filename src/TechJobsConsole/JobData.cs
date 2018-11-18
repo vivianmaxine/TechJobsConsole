@@ -69,7 +69,7 @@ namespace TechJobsConsole
             {
                 foreach (KeyValuePair<string, string> jobListing in jobListingDictionary)
                 {
-                    if (jobListing.Value.Contains(theValue)) 
+                    if (jobListing.Value.ToLower().Contains(theValue.ToLower())) 
                     {
                         if (!jobListingsMatchingValue.Contains(jobListingDictionary))
                         {

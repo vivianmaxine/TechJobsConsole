@@ -7,7 +7,7 @@ namespace TechJobsConsole
     {
         static void Main(string[] args)
         {
-            // Create two Dictionary vars to hold info for menu and data
+            // Create two Dictionary variables to hold info for menu and data
 
             // Top-level menu options
             Dictionary<string, string> actionChoices = new Dictionary<string, string>();
@@ -63,8 +63,9 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
-                    }
+                        searchResults = JobData.FindByValue(searchTerm);
+                        PrintJobs(searchResults);
+;                    }
                     else
                     {
                         searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
@@ -96,11 +97,11 @@ namespace TechJobsConsole
 
                 for (int j = 0; j < choiceKeys.Length; j++)
                 {
-                    Console.WriteLine(j + " - " + choices[choiceKeys[j]]);
+                    Console.WriteLine((j + 1) + " - " + choices[choiceKeys[j]]);
                 }
 
                 string input = Console.ReadLine();
-                choiceIdx = int.Parse(input);
+                choiceIdx = int.Parse(input) - 1;
 
                 if (choiceIdx < 0 || choiceIdx >= choiceKeys.Length)
                 {
@@ -118,7 +119,16 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("printJobs is not implemented yet");
+            foreach (Dictionary<string, string> jobListing in someJobs) {
+                foreach (KeyValuePair<string, string> jobDetail in jobListing)
+                {
+                    Console.WriteLine(jobDetail.Key + ": " + jobDetail.Value);
+                }
+             Console.WriteLine("-----------------------------------------------");
+
+            }
+            
+            // Console.WriteLine("printJobs is not implemented yet");
         }
     }
 }

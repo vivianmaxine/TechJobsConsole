@@ -71,8 +71,14 @@ namespace TechJobsConsole
                 {
                     if (jobListing.Value.Contains(theValue)) 
                     {
-                        jobListingsMatchingValue.Add(jobListingDictionary);
-                    } 
+                        if (!jobListingsMatchingValue.Contains(jobListingDictionary))
+                        {
+                            jobListingsMatchingValue.Add(jobListingDictionary);
+                        }
+                        //jobListingsMatchingValue.Add(jobListingDictionary);
+                        //break;
+                    }
+
                 }
             }
 
